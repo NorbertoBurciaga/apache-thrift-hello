@@ -38,13 +38,13 @@ class HelloHandler : virtual public HelloIf {
 
 int main(int argc, char **argv) {
   int port = 9090;
-  ::apache::thrift::stdcxx::shared_ptr<HelloHandler> handler(new HelloHandler());
-  ::apache::thrift::stdcxx::shared_ptr<TProcessor> processor(new HelloProcessor(handler));
+  shared_ptr<HelloHandler> handler(new HelloHandler());
+  shared_ptr<TProcessor> processor(new HelloProcessor(handler));
 
-  ::apache::thrift::stdcxx::shared_ptr<TTransportFactory> httpTransportFactory(new THttpServerTransportFactory());
-  ::apache::thrift::stdcxx::shared_ptr<TProtocolFactory> jsonProtocolFactory(new TJSONProtocolFactory());
+  shared_ptr<TTransportFactory> httpTransportFactory(new THttpServerTransportFactory());
+  shared_ptr<TProtocolFactory> jsonProtocolFactory(new TJSONProtocolFactory());
 
-  ::apache::thrift::stdcxx::shared_ptr<TServerTransport> serverTransport(new TServerSocket(port));
+  shared_ptr<TServerTransport> serverTransport(new TServerSocket(port));
 //  ::apache::thrift::stdcxx::shared_ptr<TTransportFactory> transportFactory(new TBufferedTransportFactory());
 //  ::apache::thrift::stdcxx::shared_ptr<TProtocolFactory> protocolFactory(new TBinaryProtocolFactory());
 

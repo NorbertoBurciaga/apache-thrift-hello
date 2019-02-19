@@ -1,11 +1,11 @@
-THRIFT_VER =thrift-0.11.0
-USR_DIR    =${HOME}/Downloads
-THRIFT_DIR =${USR_DIR}/${THRIFT_VER}
-INCS_DIRS  =-I/usr/local/include/boost -I${THRIFT_DIR}/lib/cpp/src/thrift
-LIBS_DIRS  =-L/usr/local/lib -L${USR_DIR}/${THRIFT_VER}/lib/cpp
+#THRIFT_VER =thrift-0.11.0
+#USR_DIR    =${HOME}/Downloads
+#THRIFT_DIR =${USR_DIR}/${THRIFT_VER}
+#INCS_DIRS  =-I/usr/local/include/boost -I${THRIFT_DIR}/lib/cpp/src/thrift
+#LIBS_DIRS  =-L/usr/local/lib -L${USR_DIR}/${THRIFT_VER}/lib/cpp
 #CPP_DEFS   =-D=HAVE_CONFIG_H
 CPP_DEFS   =-D=HAVE_NETINET_IN_H
-CPP_OPTS   =-Wall -O2 -std=c++0x
+CPP_OPTS   =-Wall -O2 -std=c++11
 LIBS       =-lthrift
 
 GEN_SRC    = ./gen-cpp/Hello.cpp  \

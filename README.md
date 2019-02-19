@@ -56,46 +56,40 @@ sudo apt install git-all gcc g++ flex bison make cmake autoconf automake libtool
 
 #### Install Boost
 ```console
-$ cd Downloads
-$ wget https://dl.bintray.com/boostorg/release/1.67.0/source/boost_1_67_0.tar.gz
-$ tar xvf boost_1_67_0.tar.gz
-$ cd boost_1_67_0/
-$ sudo ./bootstrap.sh --prefix=/usr/local
+Download latest version from: https://dl.bintray.com/boostorg/release/
+$ wget https://dl.bintray.com/boostorg/release/1.69.0/source/boost_1_69_0.tar.gz
+$ tar xvf boost_1_69_0.tar.gz
+$ cd boost_1_69_0/
+boost_1_69_0$ sudo ./bootstrap.sh --prefix=/usr/local
 Set the use of MPI
-$ user_configFile=`find $PWD -name user-config.jam`
-$ echo $user_configFile
-/home/norberto/Downloads/boost_1_67_0/tools/build/example/user-config.jam
-$ echo "using mpi;" >> $user_configFile
-$ sudo ./b2 install
+boost_1_69_0$ user_configFile=`find $PWD -name user-config.jam`
+boost_1_69_0$ echo $user_configFile
+boost_1_69_0/tools/build/example/user-config.jam
+boost_1_69_0$ echo "using mpi;" >> $user_configFile
+boost_1_69_0$ sudo ./b2 install
 ```
 
 #### Install Apache Thrift
 ```console
 $ git clone https://github.com/apache/thrift.git
 $ ./bootstrap.sh
-$ ./configure --with-boost=/usr/local
+$ ./configure --with-boost=/usr/local --without-ruby
 $ make
-it sends a ruby error:
-/usr/local/bin/rake:23:in `load': cannot load such file -- /usr/share/rubygems-integration/all/specifications/exe/rake (LoadError)
-
-but removing rake as follows could work:
-$ sudo rm /usr/share/rubygems-integration/all/specifications/rake-12.3.1.gemspec
-$ make check
-I had to do this again: $ pip install backports.ssl_match_hostname because of a phyton error: install backports.ssl_match_hostname...see https://github.com/ipython/ipython/issues/5911
-$ sudo make install
-$ sudo
+$ make -k check
 ```
 
 #### Install project
 ```console
 $ git clone https://github.com/NorbertoBurciaga/apache-thrift-hello.git
 $ cd apache-thrift-hello/src
+$ thrift --gen cpp hello.thrift
 $ make
 ```
 
 ### Testing
 
 To test:
+First check $export LD_LIBRARY_PATH=/usr/local/lib environment variable is set
 Start the server in a new process (adding an & at the end of the command)
 ```console
 apache-thrift-hello/src$  ./hello_server &
