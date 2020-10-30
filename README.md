@@ -51,7 +51,7 @@ Simple Hello world example to test Apache Thrift with HTTP transport and JSON pr
 
 #### Installing some packages required
 ```console
-sudo apt install git-all gcc g++ flex bison make cmake autoconf automake libtool autotools-dev libevent-dev zlib1g-dev pkg-config libssl-dev npm python-all python-all-dev python-all-dbg python3-all python3-all-dev python3-all-dbg valgrind
+sudo apt install git-all gcc g++ flex bison make cmake autoconf automake libtool autotools-dev libevent-dev zlib1g-dev pkg-config libssl-dev npm python-all python-all-dev python-all-dbg python3-all python3-all-dev python3-all-dbg valgrind curl
 ```
 
 #### Install Boost
